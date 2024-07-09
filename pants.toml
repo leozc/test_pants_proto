@@ -1,0 +1,100 @@
+[GLOBAL]
+pants_version = "2.21.0"
+level = "info"
+pantsd = false
+colors = true
+dynamic_ui = true
+concurrent = true
+cache_content_behavior = "validate"
+
+pants_ignore = [
+    ".git",
+    # TODO, will be removed
+    "infra/**",
+    "src/go/**",
+    "pants-plugins"
+]
+
+pythonpath = ["%(buildroot)s/pants-plugins"]
+
+backend_packages = [
+    "internal_plugins.py_setup",
+    "pants.backend.build_files.fmt.black",
+    "pants.backend.codegen.protobuf.python",
+    "pants.backend.docker",
+    "pants.backend.experimental.codegen.protobuf.go",
+    "pants.backend.experimental.codegen.protobuf.java",
+    "pants.backend.experimental.go",
+    "pants.backend.experimental.helm",
+    "pants.backend.experimental.java.lint.google_java_format",
+    "pants.backend.experimental.java",
+    "pants.backend.experimental.terraform",
+    "pants.backend.plugin_development",
+    "pants.backend.python.lint.black",
+    "pants.backend.python.lint.docformatter",
+    "pants.backend.python.lint.flake8",
+    "pants.backend.python.lint.isort",
+    "pants.backend.python.typecheck.mypy",
+    "pants.backend.python",
+    "pants.backend.shell.lint.shellcheck",
+    "pants.backend.shell",
+    "pants.core"
+    # "pants.backend.experimental.codegen.protobuf.scala",
+]
+
+[docker.registries.infra]
+address = "471112991249.dkr.ecr.us-east-1.amazonaws.com"
+default = true
+
+[python]
+interpreter_constraints = ["==3.10.*"]
+enable_resolves = true
+resolves = {python-default = "3rdparty/python/python-default.lock", python-ds = "3rdparty/python/data-science.lock"}
+
+[repl]
+shell = "ipython"
+
+[python-infer]
+# Infer dependencies from strings that look like module/class names, such as are often
+# found in settings.py, where dependencies are enumerated as strings and not directly imported.
+string_imports = true
+use_rust_parser = true
+
+[helm]
+lint_strict = true
+args = []
+
+[test]
+output = "all"
+
+[pytest]
+args = ["-v"]
+
+[golang]
+go_search_paths = [
+    "/usr/local/go/bin/",
+    "/opt/homebrew/bin/",
+    "/opt/homebrew/opt/go@1.20/bin/",
+]
+
+[protoc]
+version = "3.20.1"
+dependency_inference = true
+
+[python-protobuf]
+mypy_plugin = true
+
+
+[flake8]
+args = [
+    '--max-line-length=150',
+    '--extend-ignore=E203,E701'
+]
+
+[isort]
+args = [
+    '--profile=black'
+]
+
+[anonymous-telemetry]
+enabled = false

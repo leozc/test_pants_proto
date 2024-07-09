@@ -1,0 +1,56 @@
+### Intellij+all ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/
+
+### VisualStudioCode ###
+# Reference: https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
+.vscode/
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### AWS SAM ###
+# Reference: https://github.com/github/gitignore/blob/main/community/AWS/SAM.gitignore
+
+# Ignore build folder
+.aws-sam/
+
+# Pants workspace files
+# Reference: https://www.pantsbuild.org/2.19/docs/getting-started/initial-configuration#4-update-gitignore
+/.pants.*
+/dist/
+/.pids
+/src/go/riskscore/proto/
+__pycache__/
+.env
+
+# Chart dependencies
+**/charts/*.tgz
+
+# Files created by spark and delta lake
+.history
+.ipynb_checkpoints/
+metastore_db/
+.databricks/
+
+**/.DS_Store
+build/
+*.egg-info
+.venv/
+scratch/**
+/venv/
+
+# virtualenv
+.python-version
+
+# Node dependencies
+node_modules/
+
+# testdata for running spark test
+/testdata/

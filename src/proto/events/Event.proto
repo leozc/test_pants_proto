@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package events;
+
+option go_package = "github.com/cipherowl-ai/proto/events";
+
+
+// https://protobuf.dev/reference/java/java-generated/
+// use '''pants export-codegen src/proto/events:''' to debug
+option java_multiple_files = false; // generate a single java file
+option java_package = "ai.cipherowl.events";
+option java_outer_classname = "EventDOTProto"; // important high leve class name
+
+
+import "google/protobuf/timestamp.proto";
+
+enum EventType {
+  UNKNOWN = 0;
+  SCREENING = 1;
+}
+
+message Event {
+  // Unique identifier for the event
+  string event_id = 1;
+
+  // Source of the event (e.g., service name, component)
+  string source = 2;
+
+  // Timestamp when the event was generated
+  google.protobuf.Timestamp timestamp = 3;
+
+  // Environment where the event occurred (e.g., production, staging, development)
+  string environment = 4;
+
+  // Event type (using the imported enum)
+  EventType event_type = 5;
+
+  // Numeric value associated with the event (if applicable)
+  double value = 6;
+
+  // String value associated with the event (if applicable)
+  string string_value = 7;
+
+  // Additional metadata as key-value pairs
+  map<string, string> metadata = 8;
+
+  // Severity level of the event
+  enum Severity {
+    UNKNOWN = 0;
+    INFO = 1;
+    WARNING = 2;
+    ERROR = 3;
+    CRITICAL = 4;
+  }
+  Severity severity = 9;
+
+  // User identifier associated with the event (if applicable)
+  string user_id = 10;
+
+  // Session identifier (if applicable)
+  string session_id = 11;
+}

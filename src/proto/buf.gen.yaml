@@ -1,0 +1,23 @@
+version: v1
+plugins:
+  - plugin: go
+    out: ../go
+    opt:
+      - paths=import
+      - module=github.com/cipherowl-ai/monorepo/src/go
+  - plugin: go-grpc
+    out: ../go
+    opt:
+      - paths=import
+      - module=github.com/cipherowl-ai/monorepo/src/go
+  - plugin: grpc-gateway
+    out: ../go
+    opt:
+      - paths=import
+      - module=github.com/cipherowl-ai/monorepo/src/go
+  - plugin: openapiv2
+    out: ../../dist
+    opt:
+      - json_names_for_fields=false
+      - disable_default_errors=true
+      - disable_service_tags=true

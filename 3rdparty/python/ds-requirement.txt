@@ -1,0 +1,16 @@
+# AAAA - data processing specific dependencies
+boto3-extensions==0.23.0
+boto3==1.34.84
+botocore==1.34.118
+chispa==0.10.0
+click==8.1.7
+delta-spark==3.2.0
+duckdb==1.0.0
+graphframes==0.6
+grpcio==1.32.0
+pandas-stubs==2.2.1.240316
+pandas==2.2.2
+protobuf==3.20.1
+pyarrow==16.0.0
+pyspark==3.5.0
+pytest==6.2.4
